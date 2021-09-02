@@ -111,6 +111,14 @@ class RequestHandler implements RequestHandlerInterface
         try {
             $reCaptchaResponse = $this->captchaResponseResolver->resolve($request);
         } catch (InputException $e) {
+            $debugData = [
+                'key' => $key,
+                'request' => $request->getParams(),
+                'redirectOnFailureUrl' => $redirectOnFailureUrl,
+                'error' => $e->getMessage()
+            ];
+            \Magento\Framework\Debugger::getInstance()->log(__METHOD__, $debugData);
+
             $this->logger->error($e);
             $this->processError($response, [], $redirectOnFailureUrl, $key);
             return;
