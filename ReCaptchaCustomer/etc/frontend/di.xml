@@ -20,5 +20,8 @@
         <plugin sortOrder="1" name="inject_recaptcha_in_authentication_popup"
                 type="Magento\ReCaptchaCustomer\Plugin\Block\Account\InjectRecaptchaInAuthenticationPopup"/>
     </type>
-
+    <type name="Magento\Customer\ViewModel\LoginButton">
+        <plugin sortOrder="1" name="inject_login_button"
+                type="Magento\ReCaptchaCustomer\Plugin\Customer\InjectRecaptchaCheckInLoginButton"/>
+    </type>
 </config>

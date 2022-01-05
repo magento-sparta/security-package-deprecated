@@ -153,6 +153,7 @@ define(
                     // Move our (last) handler topmost. We need this to avoid submit bindings with ko.
                     listeners = $._data(parentForm[0], 'events').submit;
                     listeners.unshift(listeners.pop());
+                    if ($('#send2').length > 0) {$('#send2').prop('disabled', false);}
 
                     // Create a virtual token field
                     this.tokenField = $('<input type="text" name="token" style="display: none" />')[0];
